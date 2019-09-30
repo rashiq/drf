@@ -1,8 +1,12 @@
+import json
+
 import requests
 import random
 import base64
 from bs4 import BeautifulSoup, element
 from jinja2 import Template
+
+from models import SvgInfo
 
 
 def search_for_svg():
@@ -58,13 +62,21 @@ def render_svg(width, height, circle):
     """).render(width=width, height=height, circle=circle)
 
 
-def main():
-  all_items = search_for_svg()
-  downloaded_svg = download_svg(all_items)
+def get_svg() -> SvgInfo:
+  item = search_for_svg()
+  print(json.dumps(item))
+  downloaded_svg = download_svg(item)
   svg_circle = parse_circle(downloaded_svg)
   width, height = calculate_viewbox(svg_circle)
-  return render_svg(width, height, str(svg_circle))
+  svg = render_svg(width, height, str(svg_circle))
+  return SvgInfo(
+    svg=svg,
+    repo_url=item.get('repository', {}).get('html_url'),
+    repo_name=item.get('repository', {}).get('full_name'),
+    file_url=item.get('html_url'),
+    file_name=item.get('name'),
+  )
 
 
 if __name__ == '__main__':
-  print(main())
+  print(get_svg())
