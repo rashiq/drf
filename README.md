@@ -1,11 +1,11 @@
 ### What's the most creative way you can make circles appear on a website?
 
 
-This repo searches for svg files on github that have a `<circle>` and displays those. This is very bare bones.
+This repo searches for svg files on github that have a `<circle>` tag and displays those.
 
 The free github api is rate limited so give it a minute if it's not showing anything.
 
-I intentionally didn't use a more sophisticated build system. Thought about providing a dockerfile for this but that'd be way too overkill.
+This is very bare bones. I intentionally didn't use a more sophisticated build system. Thought about providing a dockerfile for this but that'd be way too overkill.
 
 
 ### Run server
