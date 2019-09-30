@@ -12,7 +12,9 @@ def get_github_svg():
       'error': 'Seems like you\'ve hit the rate limit of the github API.'
     }), 429
 
-  return jsonify(svg_info._asdict())
+  response = jsonify(svg_info._asdict())
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  return response
 
 
 if __name__ == '__main__':
