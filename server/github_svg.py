@@ -48,8 +48,8 @@ def calculate_viewbox(node: element.Tag) -> (int, int):
   int_length = lambda x: len(str(int((float(x)))))
 
   return (
-    10 ** int_length(attributes['cx'])*2,
-    10 ** int_length(attributes['cy'])*2
+    10 ** int_length(attributes['cx']) * 2,
+    10 ** int_length(attributes['cy']) * 2
   )
 
 
