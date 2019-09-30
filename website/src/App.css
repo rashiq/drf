@@ -1,0 +1,11 @@
+.circle-container {
+    width: 350px;
+    height: 350px;
+    border: 1px dashed red;
+    position: relative;
+}
+
+.circle-container > svg {
+    width: 100%;
+    height: 100%;
+}
