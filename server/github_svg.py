@@ -1,8 +1,7 @@
-import json
+import base64
+import random
 
 import requests
-import random
-import base64
 from bs4 import BeautifulSoup, element
 from jinja2 import Template
 
@@ -64,8 +63,9 @@ def render_svg(width, height, circle):
 
 def get_svg() -> SvgInfo:
   item = search_for_svg()
-  print(json.dumps(item))
+  if not item: return
   downloaded_svg = download_svg(item)
+  if not downloaded_svg: return
   svg_circle = parse_circle(downloaded_svg)
   width, height = calculate_viewbox(svg_circle)
   svg = render_svg(width, height, str(svg_circle))
