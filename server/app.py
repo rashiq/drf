@@ -20,4 +20,4 @@ def get_github_svg():
 
 
 if __name__ == '__main__':
-  app.run()
+  app.run(port=5000)
